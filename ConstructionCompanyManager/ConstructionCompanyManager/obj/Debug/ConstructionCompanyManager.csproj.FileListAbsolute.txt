@@ -19,3 +19,7 @@ C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyMan
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.csproj.CoreCompileInputs.cache
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.exe
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.pdb
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\bin\Debug\Images\bob-the-builder-logo.png
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\CustomControls\BindablePasswordBox.baml

@@ -35,6 +35,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
+        <Reference Include="System.Configuration" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
@@ -50,7 +51,14 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="Commands\RelayCommand.cs" />
+        <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
+          <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Model\LoginModel.cs" />
+        <Compile Include="Repositories\IUserRepository.cs" />
+        <Compile Include="Repositories\LoginRepository.cs" />
+        <Compile Include="Repositories\RepositoryBase.cs" />
         <Compile Include="ViewModel\LoginViewModel.cs" />
         <Compile Include="ViewModel\ViewModelBase.cs" />
         <Compile Include="View\LoginView.xaml.cs">
@@ -59,6 +67,7 @@
         <Compile Include="View\TestView.xaml.cs">
           <DependentUpon>TestView.xaml</DependentUpon>
         </Compile>
+        <Page Include="CustomControls\BindablePasswordBox.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -92,12 +101,9 @@
         <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Commands\" />
-      <Folder Include="CustomControls\" />
-      <Folder Include="Repositories\" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="Images\bob-the-builder-logo.png" />
+      <Content Include="Images\bob-the-builder-logo.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
