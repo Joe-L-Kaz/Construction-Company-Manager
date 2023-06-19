@@ -3,14 +3,12 @@ C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyMan
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\bin\Debug\ConstructionCompanyManager.pdb
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.csproj.AssemblyReference.cache
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.csproj.SuggestedBindingRedirects.cache
-C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\MainWindow.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\LoginView.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\TestView.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\App.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager_Content.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager_MarkupCompile.cache
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager_MarkupCompile.lref
-C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\MainWindow.baml
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\LoginView.baml
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\TestView.baml
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\ConstructionCompanyManager.g.resources

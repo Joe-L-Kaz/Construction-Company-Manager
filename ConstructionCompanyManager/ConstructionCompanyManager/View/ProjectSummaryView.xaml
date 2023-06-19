@@ -7,6 +7,6 @@
       mc:Ignorable="d"
       Title="ProjectSummaryView" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid Name="ProjectsDataGrid"/>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
 using System.Windows.Controls;
+using ConstructionCompanyManager.Repositories;
 
 namespace ConstructionCompanyManager.View
 {
@@ -7,6 +8,14 @@ namespace ConstructionCompanyManager.View
         public ProjectSummaryView()
         {
             InitializeComponent();
+            ShowProjects();
+        }
+
+        private void ShowProjects()
+        {
+            ProjectRepository projectRepository = new ProjectRepository();
+            
+            ProjectsDataGrid = projectRepository.GetAllProjects();
         }
     }
 }

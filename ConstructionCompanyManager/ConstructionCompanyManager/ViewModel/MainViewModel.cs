@@ -44,7 +44,7 @@ namespace ConstructionCompanyManager.ViewModel
 
         private void ExecuteShowProjectSummaryCommand(object obj)
         {
-            MessageBox.Show("test");
+            MessageBox.Show("Test");
         }
 
         private bool CanExecuteShowProjectSummaryCommand(object obj)

@@ -21,6 +21,7 @@
     </Window.Visibility>
 
     <Grid>
+        <Frame Name="MainViewFrame"/>
         <StackPanel Width="500">
             <TextBlock Text="Hello User." FontSize="50" TextAlignment="Center" Height="60" Margin="0,100,0,0"/>
             <TextBlock Text="Please choose an" FontSize="50" TextAlignment="Center" Height="60" Margin="0,20,0,0"/>
@@ -53,7 +54,6 @@
                     FontSize="20"
                     Height="30"
                     Command ="{Binding ShowProjectSummaryCommand}"/>
-                    
         </StackPanel>
     </Grid>
 </Window>
