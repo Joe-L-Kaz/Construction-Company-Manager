@@ -1,0 +1,42 @@
+using System.Collections.Generic;
+
+namespace ConstructionCompanyManager.Model
+{
+    
+    public class ProjectModel
+    {
+        // fields
+        private int _id;
+        private string _projectType;
+        private List<float> _sales;
+        private List<float> _purchases;
+        private bool _isEligibleForTaxRefund;
+        
+        // constructors
+        public ProjectModel(){}
+        
+        public ProjectModel(string projectType, bool isEligibleForTaxRefund)
+        {
+            _projectType = projectType;
+            _isEligibleForTaxRefund = isEligibleForTaxRefund;
+        }
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+
+        public string ProjectType
+        {
+            get => _projectType;
+            set => _projectType = value;
+        }
+
+        public bool IsEligibleForTaxRefund
+        {
+            get => _isEligibleForTaxRefund;
+            set => _isEligibleForTaxRefund = value;
+        }
+    }
+}

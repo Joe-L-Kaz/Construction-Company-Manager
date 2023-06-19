@@ -16,8 +16,8 @@ namespace ConstructionCompanyManager
             {
                 if (loginView.IsVisible == false && loginView.IsLoaded)
                 {
-                    TestView testView = new TestView();
-                    testView.Show();
+                    MainView mainView = new MainView();
+                    mainView.Show();
                     loginView.Close();
                 }
             };

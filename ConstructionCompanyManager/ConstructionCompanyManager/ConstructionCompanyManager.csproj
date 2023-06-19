@@ -56,13 +56,22 @@
           <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
         </Compile>
         <Compile Include="Model\LoginModel.cs" />
+        <Compile Include="Model\ProjectModel.cs" />
         <Compile Include="Repositories\IUserRepository.cs" />
         <Compile Include="Repositories\LoginRepository.cs" />
+        <Compile Include="Repositories\ProjectRepository.cs" />
         <Compile Include="Repositories\RepositoryBase.cs" />
         <Compile Include="ViewModel\LoginViewModel.cs" />
+        <Compile Include="ViewModel\MainViewModel.cs" />
         <Compile Include="ViewModel\ViewModelBase.cs" />
         <Compile Include="View\LoginView.xaml.cs">
           <DependentUpon>LoginView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="View\MainView.xaml.cs">
+          <DependentUpon>MainView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="View\ProjectSummaryView.xaml.cs">
+          <DependentUpon>ProjectSummaryView.xaml</DependentUpon>
         </Compile>
         <Compile Include="View\TestView.xaml.cs">
           <DependentUpon>TestView.xaml</DependentUpon>
@@ -81,6 +90,8 @@
             <SubType>Code</SubType>
         </Compile>
         <Page Include="View\LoginView.xaml" />
+        <Page Include="View\MainView.xaml" />
+        <Page Include="View\ProjectSummaryView.xaml" />
         <Page Include="View\TestView.xaml" />
     </ItemGroup>
     <ItemGroup>

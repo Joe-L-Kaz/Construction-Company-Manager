@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Release\
 ConstructionCompanyManager
 none
 false
-DEBUG;TRACE
+TRACE
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\App.xaml
 6-2074394394
 1485775388
@@ -16,5 +16,5 @@ C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyMan
 101093563972
 CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;View\LoginView.xaml;View\MainView.xaml;View\ProjectSummaryView.xaml;View\TestView.xaml;
 
-False
+True
 
