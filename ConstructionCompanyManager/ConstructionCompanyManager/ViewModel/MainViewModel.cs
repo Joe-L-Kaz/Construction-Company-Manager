@@ -1,4 +1,6 @@
+using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ConstructionCompanyManager.Commands;
 using ConstructionCompanyManager.Repositories;
@@ -10,6 +12,7 @@ namespace ConstructionCompanyManager.ViewModel
     {
         private string _errorMessage;
         private bool _isViewVisible = true;
+        private Frame _showProjectSummaryFrame = new Frame();
 
         public bool IsViewVisible
         {
@@ -31,8 +34,22 @@ namespace ConstructionCompanyManager.ViewModel
             }
         }
 
+        public Frame ShowProjectSummaryFrame
+        {
+            get => _showProjectSummaryFrame;
+            set
+            {
+                _showProjectSummaryFrame = value;
+                OnPropertyChanged(nameof(ShowProjectSummaryFrame));
+            }
+        }
+        
+
         public MainViewModel()
         {
+            EditExistingProjectCommand =
+                new RelayCommand(ExecuteEditExistingProjectCommand, CanExecuteEditExistingProjectCommand);
+            
             ShowProjectSummaryCommand =
                 new RelayCommand(ExecuteShowProjectSummaryCommand, CanExecuteShowProjectSummaryCommand);
         }
@@ -42,9 +59,29 @@ namespace ConstructionCompanyManager.ViewModel
         public ICommand EditExistingProjectCommand { get; private set; }
         public ICommand ShowProjectSummaryCommand { get; private set; }
 
+        private void ExecuteEditExistingProjectCommand(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanExecuteEditExistingProjectCommand(object obj)
+        {
+            ProjectRepository projRepo = new ProjectRepository();
+
+            if (projRepo.IsProjectTableEmpty())
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void ExecuteShowProjectSummaryCommand(object obj)
         {
-            MessageBox.Show("Test");
+            //ShowProjectSummaryFrame.Content = new ProjectSummaryView();
+            ProjectSummaryView projectSummaryView = new ProjectSummaryView();
+            projectSummaryView.Show();
+
         }
 
         private bool CanExecuteShowProjectSummaryCommand(object obj)

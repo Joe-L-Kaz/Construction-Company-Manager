@@ -21,11 +21,30 @@
     </Window.Visibility>
 
     <Grid>
-        <Frame Name="MainViewFrame"/>
+        
+        <Frame Name="MainViewFrame" 
+               DataContext="{Binding ShowProjectSummaryFrame, 
+               Mode=TwoWay, 
+               UpdateSourceTrigger=PropertyChanged}"/>
+        
         <StackPanel Width="500">
-            <TextBlock Text="Hello User." FontSize="50" TextAlignment="Center" Height="60" Margin="0,100,0,0"/>
-            <TextBlock Text="Please choose an" FontSize="50" TextAlignment="Center" Height="60" Margin="0,20,0,0"/>
-            <TextBlock Text="action:" FontSize="50" TextAlignment="Center" Height="60" Margin="0,0,0,0"/>
+            <TextBlock Text="Hello User." 
+                       FontSize="50"
+                       TextAlignment="Center"
+                       Height="60"
+                       Margin="0,100,0,0"/>
+            
+            <TextBlock Text="Please choose an"
+                       FontSize="50"
+                       TextAlignment="Center"
+                       Height="60" 
+                       Margin="0,20,0,0"/>
+            
+            <TextBlock Text="action:" 
+                       FontSize="50" 
+                       TextAlignment="Center" 
+                       Height="60" 
+                       Margin="0,0,0,0"/>
             
             <Button Name="AddNewProjectButton" 
                     Margin="0,20,0,0" 
@@ -46,7 +65,8 @@
                     Content="3. Edit Existing Project." 
                     Width="300" 
                     FontSize="20"
-                    Height="30"/>
+                    Height="30"
+                    Command ="{Binding EditExistingProjectCommand}"/>
             
             <Button Name="ShowProjectSummaryButton" Margin="0,20,0,0"
                     Content="4. Show Project Summary"

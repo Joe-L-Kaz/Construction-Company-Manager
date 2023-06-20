@@ -1,21 +1,12 @@
-using System.Windows.Controls;
-using ConstructionCompanyManager.Repositories;
+using System.Windows;
 
 namespace ConstructionCompanyManager.View
 {
-    public partial class ProjectSummaryView : Page
+    public partial class ProjectSummaryView : Window
     {
         public ProjectSummaryView()
         {
             InitializeComponent();
-            ShowProjects();
-        }
-
-        private void ShowProjects()
-        {
-            ProjectRepository projectRepository = new ProjectRepository();
-            
-            ProjectsDataGrid = projectRepository.GetAllProjects();
         }
     }
 }

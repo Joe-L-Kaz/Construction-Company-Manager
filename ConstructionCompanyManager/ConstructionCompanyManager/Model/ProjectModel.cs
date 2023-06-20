@@ -21,6 +21,13 @@ namespace ConstructionCompanyManager.Model
             _isEligibleForTaxRefund = isEligibleForTaxRefund;
         }
 
+        public ProjectModel(int id, string projectType, bool isEligibleForTaxRefund)
+        {
+            _id = id;
+            _projectType = projectType;
+            _isEligibleForTaxRefund = isEligibleForTaxRefund;
+        }
+
         public int Id
         {
             get => _id;

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Controls;
+using ConstructionCompanyManager.Model;
 
 namespace ConstructionCompanyManager.Repositories
 {
@@ -39,10 +41,22 @@ namespace ConstructionCompanyManager.Repositories
             }
         }
 
-        public DataGrid GetAllProjects()
+        public DataTable GetAllProjects()
         {
-            DataGrid dataGrid = new DataGrid();
-            
+            string query = "select * from Project";
+
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, GetConnection());
+
+            using (sqlDataAdapter)
+            {
+                DataTable projectDataTable = new DataTable();
+                sqlDataAdapter.Fill(projectDataTable);
+                return projectDataTable;
+            }
+        }
+
+        public ProjectModel GetFirstProjectModel()
+        {
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
@@ -51,11 +65,28 @@ namespace ConstructionCompanyManager.Repositories
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    dataGrid.DataContext = cmd;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        int projId = default;
+                        string projName = default;
+                        bool projIsTaxRefund = default;
+                        
+                        while (reader.Read())
+                        { 
+                            projId = reader.GetInt32(0);
+                            projName = reader.GetString(1);
+                            projIsTaxRefund = reader.GetBoolean(2);
+                        }
+
+                        ProjectModel project = new ProjectModel(projId, projName, projIsTaxRefund);
+                        
+                        return project;
+
+                    }
                 }
             }
-
-            return dataGrid;
         }
+
+        
     }
 }
