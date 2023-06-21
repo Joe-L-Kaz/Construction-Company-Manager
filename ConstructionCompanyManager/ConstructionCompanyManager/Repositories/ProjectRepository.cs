@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Controls;
@@ -41,21 +42,9 @@ namespace ConstructionCompanyManager.Repositories
             }
         }
 
-        public DataTable GetAllProjects()
-        {
-            string query = "select * from Project";
+        
 
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, GetConnection());
-
-            using (sqlDataAdapter)
-            {
-                DataTable projectDataTable = new DataTable();
-                sqlDataAdapter.Fill(projectDataTable);
-                return projectDataTable;
-            }
-        }
-
-        public ProjectModel GetFirstProjectModel()
+        public ObservableCollection<ProjectModel> GetAllProjects()
         {
             using (SqlConnection connection = GetConnection())
             {
@@ -70,17 +59,20 @@ namespace ConstructionCompanyManager.Repositories
                         int projId = default;
                         string projName = default;
                         bool projIsTaxRefund = default;
-                        
+                        ObservableCollection<ProjectModel> allProjects = new ObservableCollection<ProjectModel>();
+
                         while (reader.Read())
                         { 
                             projId = reader.GetInt32(0);
                             projName = reader.GetString(1);
                             projIsTaxRefund = reader.GetBoolean(2);
+                            ProjectModel project = new ProjectModel(projId, projName, projIsTaxRefund);
+                            allProjects.Add(project);
                         }
 
-                        ProjectModel project = new ProjectModel(projId, projName, projIsTaxRefund);
                         
-                        return project;
+                        
+                        return allProjects;
 
                     }
                 }

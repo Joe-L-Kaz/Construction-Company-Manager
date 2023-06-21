@@ -20,9 +20,36 @@
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibilityConverter}" />
     </Window.Visibility>
     
-    <StackPanel>
-        <TextBlock Text="{Binding ProjectModel.Id}" />
-        <TextBlock Text="{Binding ProjectModel.ProjectType}" />
-        <TextBlock Text="{Binding ProjectModel.IsEligibleForTaxRefund}" />
-    </StackPanel>
+    <Grid>
+        
+        <StackPanel HorizontalAlignment="Left" Width="200" Margin="10,0,0,0">
+            
+            <Grid VerticalAlignment="Top" Height="50">
+                
+                <TextBlock VerticalAlignment="Center"
+                           Text="Projects List"
+                           TextAlignment="Center"
+                           FontSize="20"
+                           TextDecorations="Underline"/>
+            </Grid>
+            
+            <ListBox ItemsSource="{Binding ProjectTable}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Id: {0} | Type: {1} | Refund Eligible: {2}">
+                                    <Binding Path="Id" />
+                                    <Binding Path="ProjectType" />
+                                    <Binding Path="IsEligibleForTaxRefund" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+        </StackPanel>
+        
+    </Grid>
 </Window>

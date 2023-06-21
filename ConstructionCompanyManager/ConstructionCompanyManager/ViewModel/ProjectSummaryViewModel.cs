@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Controls;
@@ -9,9 +10,19 @@ namespace ConstructionCompanyManager.ViewModel
 {
     public class ProjectSummaryViewModel : ViewModelBase
     {
-        private ListBox _projectTable;
+        private ObservableCollection<ProjectModel> _projectTable;
         private bool _isViewVisible = true;
         private ProjectModel _projectModel;
+        
+        public ObservableCollection<ProjectModel> ProjectTable
+        {
+            get => _projectTable;
+            private set
+            {
+                _projectTable = value;
+                OnPropertyChanged(nameof(ProjectTable));
+            }
+        }
         
         public ProjectModel ProjectModel
         {
@@ -22,15 +33,7 @@ namespace ConstructionCompanyManager.ViewModel
                 OnPropertyChanged(nameof(ProjectModel));
             }
         }
-        public ListBox ProjectTable
-        {
-            get => _projectTable;
-            private set
-            {
-                _projectTable = value;
-                OnPropertyChanged(nameof(ProjectTable));
-            }
-        }
+        
         
         public bool IsViewVisible
         {
@@ -45,7 +48,7 @@ namespace ConstructionCompanyManager.ViewModel
         public ProjectSummaryViewModel()
         {
             ProjectRepository projectRepository = new ProjectRepository();
-            ProjectModel = projectRepository.GetFirstProjectModel();
+            ProjectTable = projectRepository.GetAllProjects();
         }
 
     }

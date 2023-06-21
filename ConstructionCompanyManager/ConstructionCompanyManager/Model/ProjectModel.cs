@@ -31,19 +31,19 @@ namespace ConstructionCompanyManager.Model
         public int Id
         {
             get => _id;
-            set => _id = value;
+            private set => _id = value;
         }
 
         public string ProjectType
         {
             get => _projectType;
-            set => _projectType = value;
+            private set => _projectType = value;
         }
 
         public bool IsEligibleForTaxRefund
         {
             get => _isEligibleForTaxRefund;
-            set => _isEligibleForTaxRefund = value;
+            private set => _isEligibleForTaxRefund = value;
         }
     }
 }
