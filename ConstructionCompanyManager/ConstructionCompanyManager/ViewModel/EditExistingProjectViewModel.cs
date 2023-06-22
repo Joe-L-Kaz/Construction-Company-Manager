@@ -131,7 +131,9 @@ namespace ConstructionCompanyManager.ViewModel
 
         private void ExecuteDeleteSelectedProject(object obj)
         {
-            throw new NotImplementedException();
+            ProjectRepository projectRepository = new ProjectRepository();
+            projectRepository.DeleteProject(SelectedProject.Id);
+            UpdateProjectTableOnDelete();
         }
 
         private bool CanExecuteDeleteSelectedProject(object obj)
@@ -142,6 +144,12 @@ namespace ConstructionCompanyManager.ViewModel
             }
 
             return true;
+        }
+
+        private void UpdateProjectTableOnDelete()
+        {
+            ProjectRepository projectRepository = new ProjectRepository();
+            ProjectTable = projectRepository.GetAllProjects();
         }
     }
 }

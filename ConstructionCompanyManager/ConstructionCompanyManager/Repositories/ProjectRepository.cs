@@ -132,5 +132,22 @@ namespace ConstructionCompanyManager.Repositories
                 }
             }
         }
+
+        public void DeleteProject(int projectId)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Project WHERE Id = @projectId;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@projectId", projectId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
