@@ -1,31 +1,37 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ConstructionCompanyManager.Model
 {
-    
     public class ProjectModel
     {
         // fields
         private int _id;
         private string _projectType;
-        private List<float> _sales;
-        private List<float> _purchases;
+        private ObservableCollection<float> _sales;
+        private ObservableCollection<float> _purchases;
         private bool _isEligibleForTaxRefund;
-        
+
         // constructors
-        public ProjectModel(){}
         
+        //
         public ProjectModel(string projectType, bool isEligibleForTaxRefund)
         {
-            _projectType = projectType;
-            _isEligibleForTaxRefund = isEligibleForTaxRefund;
+            ProjectType = projectType;
+            IsEligibleForTaxRefund = isEligibleForTaxRefund;
+        }
+        
+        public ProjectModel(string projectType, bool isEligibleForTaxRefund, ObservableCollection<float> sales,
+            ObservableCollection<float> purchases):this(projectType, isEligibleForTaxRefund)
+        {
+            Sales = sales;
+            Purchases = purchases;
         }
 
-        public ProjectModel(int id, string projectType, bool isEligibleForTaxRefund)
+        public ProjectModel(int id, string projectType, bool isEligibleForTaxRefund, ObservableCollection<float> sales,
+            ObservableCollection<float> purchases):this(projectType,isEligibleForTaxRefund,sales,purchases)
         {
-            _id = id;
-            _projectType = projectType;
-            _isEligibleForTaxRefund = isEligibleForTaxRefund;
+            Id = id;
         }
 
         public int Id
@@ -44,6 +50,18 @@ namespace ConstructionCompanyManager.Model
         {
             get => _isEligibleForTaxRefund;
             private set => _isEligibleForTaxRefund = value;
+        }
+
+        public ObservableCollection<float> Sales
+        {
+            get => _sales;
+            private set => _sales = value;
+        }
+
+        public ObservableCollection<float> Purchases
+        {
+            get => _purchases;
+            private set => _purchases = value;
         }
     }
 }
