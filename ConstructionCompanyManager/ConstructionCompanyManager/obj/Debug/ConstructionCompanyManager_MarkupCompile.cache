@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\App.xaml
-52000988569
+6337067649
 1485775388
-19-544321743
+211215633633
 101093563972
-CustomControls\BindablePasswordBox.xaml;View\LoginView.xaml;View\MainView.xaml;View\ProjectSummaryView.xaml;View\TestView.xaml;
+CustomControls\BindablePasswordBox.xaml;View\EditExistingProjectView.xaml;View\LoginView.xaml;View\MainView.xaml;View\ProjectSummaryView.xaml;View\TestView.xaml;
 
 False
 

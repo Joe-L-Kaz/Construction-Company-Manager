@@ -61,7 +61,8 @@ namespace ConstructionCompanyManager.ViewModel
 
         private void ExecuteEditExistingProjectCommand(object obj)
         {
-            throw new NotImplementedException();
+            EditExistingProjectView editExistingProjectView = new EditExistingProjectView();
+            editExistingProjectView.Show();
         }
 
         private bool CanExecuteEditExistingProjectCommand(object obj)

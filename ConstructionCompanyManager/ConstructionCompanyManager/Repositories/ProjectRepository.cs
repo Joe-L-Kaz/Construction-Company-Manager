@@ -104,5 +104,33 @@ namespace ConstructionCompanyManager.Repositories
                 }
             }
         }
+
+        public void AddSaleToProject(int projectId, float saleAmount)
+        {
+            string query = "INSERT INTO ProjectSales (ProjectId, SaleAmount) VALUES (@projectId, @transactionAmount);";
+            AddSaleOrPurchaseToProject(projectId, saleAmount ,query);
+        }
+        
+        public void AddPurchaseToProject(int projectId, float purchaseAmount)
+        {
+            string query = "INSERT INTO ProjectPurchases (ProjectId, PurchaseAmount) VALUES (@projectId, @transactionAmount);";
+            AddSaleOrPurchaseToProject(projectId, purchaseAmount ,query);
+        }
+
+        private void AddSaleOrPurchaseToProject(int projectId, float transactionAmount ,string query)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@projectId", projectId);
+                    cmd.Parameters.AddWithValue("@transactionAmount", transactionAmount);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
