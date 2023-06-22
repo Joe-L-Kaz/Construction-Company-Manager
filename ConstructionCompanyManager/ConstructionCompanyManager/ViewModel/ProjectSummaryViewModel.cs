@@ -12,8 +12,10 @@ namespace ConstructionCompanyManager.ViewModel
     {
         private ObservableCollection<ProjectModel> _projectTable;
         private bool _isViewVisible = true;
-        private ProjectModel _projectModel;
-        
+        private ProjectModel _selectedProject;
+        private ObservableCollection<float> _selectedProjectSales;
+        private ObservableCollection<float> _selectedProjectPurchases;
+
         public ObservableCollection<ProjectModel> ProjectTable
         {
             get => _projectTable;
@@ -23,18 +25,18 @@ namespace ConstructionCompanyManager.ViewModel
                 OnPropertyChanged(nameof(ProjectTable));
             }
         }
-        
-        public ProjectModel ProjectModel
+
+        public ProjectModel SelectedProject
         {
-            get => _projectModel;
-            private set
+            get => _selectedProject;
+            set
             {
-                _projectModel = value;
-                OnPropertyChanged(nameof(ProjectModel));
+                _selectedProject = value;
+                OnPropertyChanged(nameof(SelectedProject));
             }
         }
-        
-        
+
+
         public bool IsViewVisible
         {
             get => _isViewVisible;
@@ -45,11 +47,30 @@ namespace ConstructionCompanyManager.ViewModel
             }
         }
 
+        public ObservableCollection<float> SelectedProjectSales
+        {
+            get => _selectedProjectSales;
+            set
+            {
+                _selectedProjectSales = value;
+                OnPropertyChanged(nameof(SelectedProject));
+            }
+        }
+
+        public ObservableCollection<float> SelectedProjectPurchases
+        {
+            get => _selectedProjectPurchases;
+            set
+            {
+                _selectedProjectPurchases = value;
+                OnPropertyChanged(nameof(SelectedProjectPurchases));
+            }
+        }
+
         public ProjectSummaryViewModel()
         {
             ProjectRepository projectRepository = new ProjectRepository();
             ProjectTable = projectRepository.GetAllProjects();
         }
-
     }
 }

@@ -1,4 +1,4 @@
-<Window x:Class="ConstructionCompanyManager.View.ProjectSummaryView"
+<Window x:Class="ConstructionCompanyManager.View.EditExistingProjectView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:ConstructionCompanyManager.View"
         xmlns:viewModel="clr-namespace:ConstructionCompanyManager.ViewModel"
         mc:Ignorable="d"
-        Title="ProjectSummaryView" Height="450" Width="800">
-    
+        Title="EditExistingProjectView" Height="450" Width="800">
     <Window.DataContext>
-        <viewModel:ProjectSummaryViewModel/>
+        <viewModel:EditExistingProjectViewModel/>
     </Window.DataContext>
     
     <Window.Resources>
@@ -33,7 +32,10 @@
                            TextDecorations="Underline"/>
             </Grid>
             
-            <ListBox SelectedItem="{Binding SelectedProject}" ItemsSource="{Binding ProjectTable}">
+            <ListBox SelectedItem="{Binding SelectedProject}"
+                     ItemsSource="{Binding ProjectTable, 
+                     UpdateSourceTrigger=PropertyChanged}">
+                
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -51,33 +53,45 @@
             
         </StackPanel>
         
-        <StackPanel Width="200" HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Width="200" Margin="10,0,0,0">
             
             <Grid VerticalAlignment="Top" Height="50">
                 
                 <TextBlock VerticalAlignment="Center"
-                           Text="Selected Project Sales"
+                           Text="Operations"
                            TextAlignment="Center"
-                           FontSize="16"
+                           FontSize="20"
                            TextDecorations="Underline"/>
             </Grid>
             
-            <ListBox ItemsSource="{Binding  SelectedProject.Sales}"></ListBox>
-            
-        </StackPanel>
-        
-        <StackPanel Width="200" HorizontalAlignment="Right" Margin="0,0,20,0">
-            
-            <Grid VerticalAlignment="Top" Height="50">
+            <Grid>
                 
-                <TextBlock VerticalAlignment="Center"
-                           Text="Selected Project Purchases"
-                           TextAlignment="Center"
-                           FontSize="16"
-                           TextDecorations="Underline"/>
+                <StackPanel>
+                
+                    <StackPanel>
+                        <TextBox Text="{Binding SaleAmountString,
+                         Mode=TwoWay,
+                         UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <Button Command="{Binding AddSaleToSelectedProject}"
+                                Content="Add sale"/>
+                    </StackPanel>
+                    
+                    <StackPanel Margin="0,10,0,0">
+                        <TextBox Text="{Binding PurchaseAmountString,
+                        Mode=TwoWay,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <Button Command="{Binding AddPurchaseToSelectedProject}"
+                                Content="Add Purchase"/>
+                    </StackPanel>
+                    
+                    <StackPanel Margin="0,10,0,0">
+                        <Button Command="{Binding DeleteSelectedProject}" Content="Delete Selected Project"/>
+                    </StackPanel>
+                    
+                </StackPanel>
             </Grid>
-            
-            <ListBox ItemsSource="{Binding  SelectedProject.Purchases}"></ListBox>
             
         </StackPanel>
         

@@ -13,33 +13,16 @@ namespace ConstructionCompanyManager.Repositories
     {
         public bool IsProjectTableEmpty()
         {
-            bool projectTableIsEmpty;
-
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
 
-                string query = "select * from Project";
+                string query = "SELECT COUNT(*) FROM Project";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    List<int> projIds = new List<int>();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int projId = reader.GetInt32(0);
-                            projIds.Add(projId);
-                        }
-
-                        if (projIds.Count == 0)
-                        {
-                            return true;
-                        }
-
-                        return false;
-                    }
+                    int rowCount = (int)cmd.ExecuteScalar();
+                    return rowCount == 0;
                 }
             }
         }
@@ -70,6 +53,8 @@ namespace ConstructionCompanyManager.Repositories
                             allProjects.Add(project);
                         }
 
+                        reader.Close();
+
                         return allProjects;
                     }
                 }
@@ -78,64 +63,89 @@ namespace ConstructionCompanyManager.Repositories
 
         private ObservableCollection<float> GetProjectSales(int projectId)
         {
-            using (SqlConnection connection = GetConnection())
-            {
-                connection.Open();
-
-                string query =
-                    $"SELECT s.SalesAmount FROM ProjectSales s JOIN Project p ON s.ProjectId = p.Id WHERE p.Id = @projectId;";
-
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@projectId", projectId);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        ObservableCollection<float> allProjectSales = new ObservableCollection<float>();
-
-                        while (reader.Read())
-                        {
-                            if (!reader.IsDBNull(0))
-                            {
-                                float sale = (float)reader.GetDouble(0);
-                                allProjectSales.Add(sale);
-                            }
-                        }
-
-                        return allProjectSales;
-                    }
-                }
-            }
+            string query =
+                "SELECT s.SaleAmount FROM ProjectSales s JOIN Project p ON s.ProjectId = p.Id WHERE p.Id = @projectId;";
+            return GetProjectData(projectId, query);
         }
 
         private ObservableCollection<float> GetProjectPurchases(int projectId)
+        {
+            string query =
+                "SELECT s.PurchaseAmount FROM ProjectPurchases s JOIN Project p ON s.ProjectId = p.Id WHERE p.Id = @projectId;";
+            return GetProjectData(projectId, query);
+        }
+
+
+        private ObservableCollection<float> GetProjectData(int projectId, string query)
         {
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
 
-                string query =
-                    "SELECT s.PurchaseAmount FROM ProjectPurchases s JOIN Project p ON s.ProjectId = p.Id WHERE p.Id = @projectId;";
-
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@projectId", projectId);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        ObservableCollection<float> allProjectPurchases = new ObservableCollection<float>();
+                        ObservableCollection<float> projectData = new ObservableCollection<float>();
 
                         while (reader.Read())
                         {
                             if (!reader.IsDBNull(0))
                             {
-                                float purchase = (float)reader.GetDouble(0);
-                                allProjectPurchases.Add(purchase);
+                                float data = (float)reader.GetDouble(0);
+                                projectData.Add(data);
                             }
                         }
 
-                        return allProjectPurchases;
+                        return projectData;
                     }
+                }
+            }
+        }
+
+        public void AddSaleToProject(int projectId, float saleAmount)
+        {
+            string query = "INSERT INTO ProjectSales (ProjectId, SaleAmount) VALUES (@projectId, @transactionAmount);";
+            AddSaleOrPurchaseToProject(projectId, saleAmount ,query);
+        }
+        
+        public void AddPurchaseToProject(int projectId, float purchaseAmount)
+        {
+            string query = "INSERT INTO ProjectPurchases (ProjectId, PurchaseAmount) VALUES (@projectId, @transactionAmount);";
+            AddSaleOrPurchaseToProject(projectId, purchaseAmount ,query);
+        }
+
+        private void AddSaleOrPurchaseToProject(int projectId, float transactionAmount ,string query)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@projectId", projectId);
+                    cmd.Parameters.AddWithValue("@transactionAmount", transactionAmount);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteProject(int projectId)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Project WHERE Id = @projectId;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@projectId", projectId);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
