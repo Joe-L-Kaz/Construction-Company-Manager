@@ -61,11 +61,15 @@
         <Compile Include="Repositories\LoginRepository.cs" />
         <Compile Include="Repositories\ProjectRepository.cs" />
         <Compile Include="Repositories\RepositoryBase.cs" />
+        <Compile Include="ViewModel\AddNewProjectViewModel.cs" />
         <Compile Include="ViewModel\EditExistingProjectViewModel.cs" />
         <Compile Include="ViewModel\LoginViewModel.cs" />
         <Compile Include="ViewModel\MainViewModel.cs" />
         <Compile Include="ViewModel\ProjectSummaryViewModel.cs" />
         <Compile Include="ViewModel\ViewModelBase.cs" />
+        <Compile Include="View\AddNewProjectView.xaml.cs">
+          <DependentUpon>AddNewProjectView.xaml</DependentUpon>
+        </Compile>
         <Compile Include="View\EditExistingProjectView.xaml.cs">
           <DependentUpon>EditExistingProjectView.xaml</DependentUpon>
         </Compile>
@@ -86,6 +90,7 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Page Include="View\AddNewProjectView.xaml" />
         <Page Include="View\EditExistingProjectView.xaml" />
         <Page Include="View\LoginView.xaml" />
         <Page Include="View\MainView.xaml" />
