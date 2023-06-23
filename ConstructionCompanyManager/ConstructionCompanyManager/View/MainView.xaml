@@ -51,7 +51,8 @@
                     Content="1. Add new Project."
                     Width="300" 
                     FontSize="20" 
-                    Height="30"/>
+                    Height="30"
+                    Command="{Binding AddNewProjectCommand}"/>
             
             <Button Name="LoadProjectFromFileButton" 
                     Margin="0,20,0,0" 

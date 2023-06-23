@@ -47,6 +47,8 @@ namespace ConstructionCompanyManager.ViewModel
 
         public MainViewModel()
         {
+            AddNewProjectCommand = new RelayCommand(ExecuteAddNewProjectCommand);
+            
             EditExistingProjectCommand =
                 new RelayCommand(ExecuteEditExistingProjectCommand, CanExecuteEditExistingProjectCommand);
             
@@ -95,6 +97,12 @@ namespace ConstructionCompanyManager.ViewModel
             }
 
             return true;
+        }
+
+        private void ExecuteAddNewProjectCommand(object obj)
+        {
+            AddNewProjectView addNewProjectView = new AddNewProjectView();
+            addNewProjectView.Show();
         }
     }
 }

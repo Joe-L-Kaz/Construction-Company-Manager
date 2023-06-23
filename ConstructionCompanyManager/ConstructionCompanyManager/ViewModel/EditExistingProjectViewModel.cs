@@ -71,19 +71,19 @@ namespace ConstructionCompanyManager.ViewModel
             ProjectRepository projectRepository = new ProjectRepository();
             ProjectTable = projectRepository.GetAllProjects();
 
-            AddSaleToSelectedProject =
+            AddSaleToSelectedProjectCommand =
                 new RelayCommand(ExecuteAddSaleToSelectedProject, CanExecuteAddSaleToSelectedProject);
 
-            AddPurchaseToSelectedProject = new RelayCommand(ExecuteAddPurchaseToSelectedProject,
+            AddPurchaseToSelectedProjectCommand = new RelayCommand(ExecuteAddPurchaseToSelectedProject,
                 CanExecuteAddPurchaseToSelectedProject);
 
 
-            DeleteSelectedProject = new RelayCommand(ExecuteDeleteSelectedProject, CanExecuteDeleteSelectedProject);
+            DeleteSelectedProjectCommand = new RelayCommand(ExecuteDeleteSelectedProject, CanExecuteDeleteSelectedProject);
         }
 
-        public ICommand AddSaleToSelectedProject { get; private set; }
-        public ICommand AddPurchaseToSelectedProject { get; private set; }
-        public ICommand DeleteSelectedProject { get; private set; }
+        public ICommand AddSaleToSelectedProjectCommand { get; private set; }
+        public ICommand AddPurchaseToSelectedProjectCommand { get; private set; }
+        public ICommand DeleteSelectedProjectCommand { get; private set; }
 
         private void ExecuteAddSaleToSelectedProject(object obj)
         {

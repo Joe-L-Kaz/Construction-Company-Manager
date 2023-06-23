@@ -73,7 +73,7 @@
                          Mode=TwoWay,
                          UpdateSourceTrigger=PropertyChanged}"/>
                         
-                        <Button Command="{Binding AddSaleToSelectedProject}"
+                        <Button Command="{Binding AddSaleToSelectedProjectCommand}"
                                 Content="Add sale"/>
                     </StackPanel>
                     
@@ -82,12 +82,12 @@
                         Mode=TwoWay,
                         UpdateSourceTrigger=PropertyChanged}"/>
                         
-                        <Button Command="{Binding AddPurchaseToSelectedProject}"
+                        <Button Command="{Binding AddPurchaseToSelectedProjectCommand}"
                                 Content="Add Purchase"/>
                     </StackPanel>
                     
                     <StackPanel Margin="0,10,0,0">
-                        <Button Command="{Binding DeleteSelectedProject}" Content="Delete Selected Project"/>
+                        <Button Command="{Binding DeleteSelectedProjectCommand}" Content="Delete Selected Project"/>
                     </StackPanel>
                     
                 </StackPanel>
