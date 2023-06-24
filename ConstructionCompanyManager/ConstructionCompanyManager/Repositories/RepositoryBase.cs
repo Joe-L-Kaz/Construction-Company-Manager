@@ -7,7 +7,7 @@ namespace ConstructionCompanyManager.Repositories
     {
         private readonly string connectionString;
 
-        public RepositoryBase()
+        protected RepositoryBase()
         {
             connectionString = ConfigurationManager.ConnectionStrings["ConstructionCompanyDb"].ConnectionString;
         }

@@ -17,7 +17,7 @@ namespace ConstructionCompanyManager.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
         
-        private IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         
         // Properties
         public string Username

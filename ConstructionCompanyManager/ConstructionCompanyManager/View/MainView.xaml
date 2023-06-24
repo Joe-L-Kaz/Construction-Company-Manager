@@ -22,11 +22,6 @@
 
     <Grid>
         
-        <Frame Name="MainViewFrame" 
-               DataContext="{Binding ShowProjectSummaryFrame, 
-               Mode=TwoWay, 
-               UpdateSourceTrigger=PropertyChanged}"/>
-        
         <StackPanel Width="500">
             <TextBlock Text="Hello User." 
                        FontSize="50"

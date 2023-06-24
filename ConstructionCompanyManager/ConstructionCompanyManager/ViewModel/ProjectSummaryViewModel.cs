@@ -15,6 +15,7 @@ namespace ConstructionCompanyManager.ViewModel
         private ProjectModel _selectedProject;
         private ObservableCollection<float> _selectedProjectSales;
         private ObservableCollection<float> _selectedProjectPurchases;
+        private readonly ProjectRepository _projectRepository;
 
         public ObservableCollection<ProjectModel> ProjectTable
         {
@@ -69,8 +70,8 @@ namespace ConstructionCompanyManager.ViewModel
 
         public ProjectSummaryViewModel()
         {
-            ProjectRepository projectRepository = new ProjectRepository();
-            ProjectTable = projectRepository.GetAllProjects();
+            _projectRepository = new ProjectRepository();
+            ProjectTable = _projectRepository.GetAllProjects();
         }
     }
 }

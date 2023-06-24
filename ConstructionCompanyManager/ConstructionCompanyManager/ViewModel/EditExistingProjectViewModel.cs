@@ -16,6 +16,8 @@ namespace ConstructionCompanyManager.ViewModel
         private string _saleAmountString;
         private string _purchaseAmountString;
 
+        private readonly ProjectRepository _projectRepository;
+
         public ObservableCollection<ProjectModel> ProjectTable
         {
             get => _projectTable;
@@ -68,8 +70,9 @@ namespace ConstructionCompanyManager.ViewModel
 
         public EditExistingProjectViewModel()
         {
-            ProjectRepository projectRepository = new ProjectRepository();
-            ProjectTable = projectRepository.GetAllProjects();
+            _projectRepository = new ProjectRepository();
+            
+            ProjectTable = _projectRepository.GetAllProjects();
 
             AddSaleToSelectedProjectCommand =
                 new RelayCommand(ExecuteAddSaleToSelectedProject, CanExecuteAddSaleToSelectedProject);
@@ -109,8 +112,7 @@ namespace ConstructionCompanyManager.ViewModel
 
         private void ExecuteAddPurchaseToSelectedProject(object obj)
         {
-            ProjectRepository projectRepository = new ProjectRepository();
-            projectRepository.AddPurchaseToProject(SelectedProject.Id, float.Parse(PurchaseAmountString));
+            _projectRepository.AddPurchaseToProject(SelectedProject.Id, float.Parse(PurchaseAmountString));
             PurchaseAmountString = string.Empty;
         }
 
@@ -131,8 +133,7 @@ namespace ConstructionCompanyManager.ViewModel
 
         private void ExecuteDeleteSelectedProject(object obj)
         {
-            ProjectRepository projectRepository = new ProjectRepository();
-            projectRepository.DeleteProject(SelectedProject.Id);
+            _projectRepository.DeleteProject(SelectedProject.Id);
             UpdateProjectTableOnDelete();
         }
 
@@ -145,11 +146,9 @@ namespace ConstructionCompanyManager.ViewModel
 
             return true;
         }
-
         private void UpdateProjectTableOnDelete()
         {
-            ProjectRepository projectRepository = new ProjectRepository();
-            ProjectTable = projectRepository.GetAllProjects();
+           ProjectTable = _projectRepository.GetAllProjects();
         }
     }
 }
