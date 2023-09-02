@@ -11,5 +11,5 @@ The login button is not accessible until both the username and password boxes ha
 
 Invisible message box any is then visible if entered details dont match the ones stored in the database:
 
-![image](https://github.com/Joe-L-Kaz/Construction-Company-Manager/assets/109974112/baf06f77-d6b0-4c43-bb1f-0998967dd17b)
+![image](https://github.com/Joe-L-Kaz/Construction-Company-Manager/assets/109974112/baf06f77-d6b0-4c43-bb1f-0998967dd17b) 
 
