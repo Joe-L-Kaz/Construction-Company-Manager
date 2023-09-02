@@ -8,7 +8,8 @@ The login button is not accessible until both the username and password boxes ha
 ![image](https://github.com/Joe-L-Kaz/Construction-Company-Manager/assets/109974112/083674f7-5dde-421b-a2c2-b5bff890feec)
 ![image](https://github.com/Joe-L-Kaz/Construction-Company-Manager/assets/109974112/2db16986-35d0-4957-adcf-98fca2ca287c)
 
-Invisible Message box any details dont match:
+
+Invisible message box any is then visible if entered details dont match the ones stored in the database:
 
 ![image](https://github.com/Joe-L-Kaz/Construction-Company-Manager/assets/109974112/baf06f77-d6b0-4c43-bb1f-0998967dd17b)
 
