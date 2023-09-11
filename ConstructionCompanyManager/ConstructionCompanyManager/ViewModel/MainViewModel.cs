@@ -10,10 +10,10 @@ namespace ConstructionCompanyManager.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _errorMessage;
         private bool _isViewVisible = true;
-        private Frame _showProjectSummaryFrame = new Frame();
 
+        private readonly ProjectRepository _projectRepository;
+        
         public bool IsViewVisible
         {
             get => _isViewVisible;
@@ -24,29 +24,12 @@ namespace ConstructionCompanyManager.ViewModel
             }
         }
 
-        public string ErrorMessage
-        {
-            get => _errorMessage;
-            set
-            {
-                _errorMessage = value;
-                OnPropertyChanged(nameof(ErrorMessage));
-            }
-        }
-
-        public Frame ShowProjectSummaryFrame
-        {
-            get => _showProjectSummaryFrame;
-            set
-            {
-                _showProjectSummaryFrame = value;
-                OnPropertyChanged(nameof(ShowProjectSummaryFrame));
-            }
-        }
-        
-
         public MainViewModel()
         {
+            _projectRepository = new ProjectRepository();
+            
+            AddNewProjectCommand = new RelayCommand(ExecuteAddNewProjectCommand);
+            
             EditExistingProjectCommand =
                 new RelayCommand(ExecuteEditExistingProjectCommand, CanExecuteEditExistingProjectCommand);
             
@@ -67,9 +50,7 @@ namespace ConstructionCompanyManager.ViewModel
 
         private bool CanExecuteEditExistingProjectCommand(object obj)
         {
-            ProjectRepository projRepo = new ProjectRepository();
-
-            if (projRepo.IsProjectTableEmpty())
+            if (_projectRepository.IsProjectTableEmpty())
             {
                 return false;
             }
@@ -87,14 +68,18 @@ namespace ConstructionCompanyManager.ViewModel
 
         private bool CanExecuteShowProjectSummaryCommand(object obj)
         {
-            ProjectRepository projRepo = new ProjectRepository();
-
-            if (projRepo.IsProjectTableEmpty())
-            {
+           if (_projectRepository.IsProjectTableEmpty())
+           {
                 return false;
-            }
+           }
+           
+           return true;
+        }
 
-            return true;
+        private void ExecuteAddNewProjectCommand(object obj)
+        {
+            AddNewProjectView addNewProjectView = new AddNewProjectView();
+            addNewProjectView.Show();
         }
     }
 }

@@ -27,3 +27,5 @@ C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyMan
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\ProjectSummaryView.baml
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\EditExistingProjectView.g.cs
 C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\EditExistingProjectView.baml
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\AddNewProjectView.g.cs
+C:\My Apps\Programming\Repos\Construction-Company-Manager\ConstructionCompanyManager\ConstructionCompanyManager\obj\Debug\View\AddNewProjectView.baml

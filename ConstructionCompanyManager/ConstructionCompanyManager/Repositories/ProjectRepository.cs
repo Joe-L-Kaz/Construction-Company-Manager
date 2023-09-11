@@ -149,5 +149,23 @@ namespace ConstructionCompanyManager.Repositories
                 }
             }
         }
+
+        public void AddNewProject(ProjectModel projectModel)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "INSERT INTO Project (Type, IsTaxRefundEligible) VALUES (@name, @isEligible);";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@name", projectModel.ProjectType);
+                    cmd.Parameters.AddWithValue("@isEligible", projectModel.IsEligibleForTaxRefund);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

@@ -1,16 +1,15 @@
-<Window x:Class="ConstructionCompanyManager.View.EditExistingProjectView"
+<Window x:Class="ConstructionCompanyManager.View.AddNewProjectView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:ConstructionCompanyManager.View"
         xmlns:viewModel="clr-namespace:ConstructionCompanyManager.ViewModel"
         mc:Ignorable="d"
-        Title="EditExistingProjectView" Height="450" Width="800">
+        Title="AddNewProjectView" Height="450" Width="800">
     <Window.DataContext>
-        <viewModel:EditExistingProjectViewModel/>
+        <viewModel:AddNewProjectViewModel />
     </Window.DataContext>
-    
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
     </Window.Resources>
@@ -18,24 +17,24 @@
     <Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibilityConverter}" />
     </Window.Visibility>
-    
+
     <Grid>
-        
+
         <StackPanel HorizontalAlignment="Left" Width="200" Margin="10,0,0,0">
-            
+
             <Grid VerticalAlignment="Top" Height="50">
-                
+
                 <TextBlock VerticalAlignment="Center"
                            Text="Projects List"
                            TextAlignment="Center"
                            FontSize="20"
-                           TextDecorations="Underline"/>
+                           TextDecorations="Underline" />
             </Grid>
-            
+
             <ListBox SelectedItem="{Binding SelectedProject}"
                      ItemsSource="{Binding ProjectTable, 
                      UpdateSourceTrigger=PropertyChanged}">
-                
+
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -50,50 +49,34 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            
+
         </StackPanel>
-        
+
         <StackPanel HorizontalAlignment="Center" Width="200" Margin="10,0,0,0">
-            
+
             <Grid VerticalAlignment="Top" Height="50">
-                
+
                 <TextBlock VerticalAlignment="Center"
                            Text="Operations"
                            TextAlignment="Center"
                            FontSize="20"
-                           TextDecorations="Underline"/>
+                           TextDecorations="Underline" />
             </Grid>
-            
+
             <Grid>
-                
+
                 <StackPanel>
+
+                    <Button Command="{Binding AddNewBuildCommand}"
+                            Content="Create New Build" />
+
+                    <Button Command="{Binding AddRenovationCommand}"
+                            Content="Create Renovation" Margin="0,10" />
                 
-                    <StackPanel>
-                        <TextBox Text="{Binding SaleAmountString,
-                         Mode=TwoWay,
-                         UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <Button Command="{Binding AddSaleToSelectedProjectCommand}"
-                                Content="Add sale"/>
-                    </StackPanel>
-                    
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBox Text="{Binding PurchaseAmountString,
-                        Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <Button Command="{Binding AddPurchaseToSelectedProjectCommand}"
-                                Content="Add Purchase"/>
-                    </StackPanel>
-                    
-                    <StackPanel Margin="0,10,0,0">
-                        <Button Command="{Binding DeleteSelectedProjectCommand}" Content="Delete Selected Project"/>
-                    </StackPanel>
-                    
                 </StackPanel>
             </Grid>
-            
+
         </StackPanel>
-        
+
     </Grid>
 </Window>
